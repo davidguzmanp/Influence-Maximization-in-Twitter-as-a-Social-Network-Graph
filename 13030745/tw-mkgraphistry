@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+import sys
+import graphistry
+import pandas as pd
+import networkx as nx
+
+#must refresh token by logging into hub
+graphistry.register(api=3, protocol="https", server="hub.graphistry.com", username="nrauhauser", password="WileECoyoteSupraGenius666~")
+graphistry.register(api=3, protocol="https", server="hub.graphistry.com",
+                    token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Im5lYWxyIiwiaWF0IjoxNTk5ODExMDU2LCJleHAiOjE1OTk4MTQ2NTYsInVzZXJfaWQiOjEwMDIsIm9yaWdfaWF0IjoxNTk5ODExMDU2fQ.muzk3mJc2deRf-W61ittc4yxh4Gvs0T5GoRPawcvMKI")
+
+G = nx.read_gml(sys.argv[1])
+graphistry.bind(source='src', destination='dst', node='nodeid').plot(G)
