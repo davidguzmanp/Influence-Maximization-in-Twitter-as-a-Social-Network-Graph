@@ -1,0 +1,94 @@
+# prop_name, value
+name,twitter
+description,"A directed network of following relationships from Twitter, from a snowball sample crawl across \"quality\" users in 2009. A directed edge (i, j) indicates that user i follows user j."
+citation,"['M. De Choudhury, et al. \"How does the data sampling strategy impact the discovery of information diffusion in social media?\" Proc. Internat. Conf. on the Web and Social Media (ICWSM 2010)., http://www.aaai.org/ocs/index.php/ICWSM/ICWSM10/paper/viewFile/1521/1832']"
+url,http://konect.cc/networks/munmun_twitter_social
+tags,"['Social', 'Online', 'Unweighted']"
+konect_meta,"category: Social
+code: Ws
+name: Twitter (ICWSM)
+description: User–user following
+url: http://www.public.asu.edu/~mdechoud/datasets.html
+cite: konect:choudhury10 
+extr: munmun
+long-description: This is the directed network containing information about who follows whom on Twitter. Nodes represent users and an edge shows that the left user follows the right one.
+entity-names:  user
+relationship-names: follow
+"
+konect_readme,"Twitter (ICWSM) network, part of the Koblenz Network Collection
+===========================================================================
+
+This directory contains the TSV and related files of the munmun_twitter_social network: This is the directed network containing information about who follows whom on Twitter. Nodes represent users and an edge shows that the left user follows the right one.
+
+
+More information about the network is provided here: 
+http://konect.cc/networks/munmun_twitter_social
+
+Files: 
+    meta.munmun_twitter_social -- Metadata about the network 
+    out.munmun_twitter_social -- The adjacency matrix of the network in whitespace-separated values format, with one edge per line
+      The meaning of the columns in out.munmun_twitter_social are: 
+        First column: ID of from node 
+        Second column: ID of to node
+        Third column (if present): weight or multiplicity of edge
+        Fourth column (if present):  timestamp of edges Unix time
+
+
+Use the following References for citation:
+
+@MISC{konect:2017:munmun_twitter_social,
+    title = {Twitter (ICWSM) network dataset -- {KONECT}},
+    month = oct,
+    year = {2017},
+    url = {http://konect.cc/networks/munmun_twitter_social}
+}
+
+@inproceedings{konect:choudhury10,
+        title = {How Does the Data Sampling Strategy Impact the
+                  Discovery of Information Diffusion in Social Media?},
+        author = {Choudhury, Munmun De and Yu-Ru Lin and Hari Sundaram and
+                  Candan, K. Selçuk and Lexing Xie and Aisling
+                  Kelliher}, 
+        booktitle = {ICWSM}, 
+        year = {2010}, 
+        pages = {34--41}, 
+}
+
+@inproceedings{konect:choudhury10,
+        title = {How Does the Data Sampling Strategy Impact the
+                  Discovery of Information Diffusion in Social Media?},
+        author = {Choudhury, Munmun De and Yu-Ru Lin and Hari Sundaram and
+                  Candan, K. Selçuk and Lexing Xie and Aisling
+                  Kelliher}, 
+        booktitle = {ICWSM}, 
+        year = {2010}, 
+        pages = {34--41}, 
+}
+
+
+@inproceedings{konect,
+	title = {{KONECT} -- {The} {Koblenz} {Network} {Collection}},
+	author = {Jérôme Kunegis},
+	year = {2013},
+	booktitle = {Proc. Int. Conf. on World Wide Web Companion},
+	pages = {1343--1350},
+	url = {http://dl.acm.org/citation.cfm?id=2488173},
+	url_presentation = {https://www.slideshare.net/kunegis/presentationwow},
+	url_web = {http://konect.cc/},
+	url_citations = {https://scholar.google.com/scholar?cites=7174338004474749050},
+}
+
+@inproceedings{konect,
+	title = {{KONECT} -- {The} {Koblenz} {Network} {Collection}},
+	author = {Jérôme Kunegis},
+	year = {2013},
+	booktitle = {Proc. Int. Conf. on World Wide Web Companion},
+	pages = {1343--1350},
+	url = {http://dl.acm.org/citation.cfm?id=2488173},
+	url_presentation = {https://www.slideshare.net/kunegis/presentationwow},
+	url_web = {http://konect.cc/},
+	url_citations = {https://scholar.google.com/scholar?cites=7174338004474749050},
+}
+
+
+"
