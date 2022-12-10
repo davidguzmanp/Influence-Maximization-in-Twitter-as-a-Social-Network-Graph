@@ -189,7 +189,13 @@ class MIA():
         print("Initialization Completed")
 
         for i in tqdm(range(1, k+1)):
-            u = max(Incinf_dict, key = Incinf_dict.get)
+
+            #from Incinf_dict remove the nodes in S
+            Incinf_dict_for_S = Incinf_dict.copy()
+            for v in S:
+                Incinf_dict_for_S.pop(v)
+            
+            u = max(Incinf_dict_for_S, key = Incinf_dict_for_S.get)
             MIOA = self.getMIOA(network, u, theta, digraph = True)
             for v in list(MIOA.nodes()):
                 MIIAv = self.getMIIA_global(network, v, theta, digraph = True)
