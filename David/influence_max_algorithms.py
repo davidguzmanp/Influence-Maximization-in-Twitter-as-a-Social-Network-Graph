@@ -210,3 +210,22 @@ class MIA():
                 for w in list(MIIAv.nodes()):
                     Incinf_dict[w] = Incinf_dict[w] + self.getalpha(v, w, S, MIIAv, theta)*(1 - ap_all[w])
         return S
+
+    def initial_incinf(self, network, theta):
+
+        print("Starting MIA intialization")
+
+        S = []
+        Incinf_dict = dict()
+        ap_dict = dict()
+        for v in list(network.nodes()):
+            Incinf_dict[v] = 0
+        for v in tqdm(list(network.nodes())):
+            MIIAv = self.getMIIA_global(network, v, theta, digraph = True)
+            MIIA = MIIAv
+            #MIOA = getMIOA(network, v, theta, digraph = True)
+            #print(len(list(MIIA.nodes())))
+            for u in list(MIIA.nodes()):
+                Incinf_dict[u] = Incinf_dict[u] + self.getalpha(v, u, S, MIIAv, theta) * (1 - self.getap(u, S, MIIA))
+
+        return Incinf_dict
