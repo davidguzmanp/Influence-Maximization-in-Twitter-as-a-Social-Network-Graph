@@ -424,13 +424,13 @@ class linear_threshold():
                 neighbors = self.influence[node, :].nonzero()[0]
                 if(len(neighbors) == 0):
                     continue
-                total_influence = 0.0
                 for neighbor in neighbors:
-                    if(neighbor in activated_nodes):
+                    total_influence = 0.0
+                    if(neighbor in activated_nodes or neighbor in new_activated_nodes):
                         continue
                     precessors = self.influence[:, neighbor].nonzero()[0]
                     for precessor in precessors:
-                        if precessor in activated_nodes or precessor in new_activated_nodes:
+                        if precessor in activated_nodes:
                             total_influence += self.influence[precessor][neighbor]
                     if(total_influence >= threshold):
                         new_activated_nodes.append(neighbor)
@@ -456,13 +456,13 @@ class linear_threshold():
                 neighbors = self.influence[node, :].nonzero()[0]
                 if(len(neighbors) == 0):
                     continue
-                total_influence = 0.0
                 for neighbor in neighbors:
-                    if(neighbor in activated_nodes):
+                    total_influence = 0.0
+                    if(neighbor in activated_nodes or neighbor in new_activated_nodes):
                         continue
                     precessors = self.influence[:, neighbor].nonzero()[0]
                     for precessor in precessors:
-                        if precessor in activated_nodes or precessor in new_activated_nodes:
+                        if precessor in activated_nodes:
                             total_influence += self.influence[precessor][neighbor]
                     if(total_influence >= threshold):
                         new_activated_nodes.append(neighbor)
@@ -473,6 +473,7 @@ class linear_threshold():
             old_activated_nodes = copy.deepcopy(new_activated_nodes)
             times.append(len(new_activated_nodes))
         return activated_nodes, times
+    
     
 class general_threshold():
     def __init__(self):
@@ -518,13 +519,13 @@ class general_threshold():
                 neighbors = self.influence[node, :].nonzero()[0]
                 if(len(neighbors) == 0):
                     continue
-                total_influence = 0.0
                 for neighbor in neighbors:
-                    if(neighbor in activated_nodes):
+                    total_influence = 0.0
+                    if(neighbor in activated_nodes or neighbor in new_activated_nodes):
                         continue
                     precessors = self.influence[:, neighbor].nonzero()[0]
-                    for precessor in precessors:
-                        if precessor in activated_nodes or precessor in new_activated_nodes:
+                    for precessor in precessors :
+                        if precessor in activated_nodes:
                             total_influence += self.influence[precessor][neighbor]
                     # informe/activate the node if the total influence exceeds it's threshold of activated
                     if(total_influence >= self.threshold[neighbor]):
@@ -555,13 +556,13 @@ class general_threshold():
                 neighbors = self.influence[node, :].nonzero()[0]
                 if(len(neighbors) == 0):
                     continue
-                total_influence = 0.0
                 for neighbor in neighbors:
-                    if(neighbor in activated_nodes):
+                    total_influence = 0.0
+                    if(neighbor in activated_nodes or neighbor in new_activated_nodes):
                         continue
                     precessors = self.influence[:, neighbor].nonzero()[0]
                     for precessor in precessors:
-                        if precessor in activated_nodes or precessor in new_activated_nodes:
+                        if precessor in activated_nodes:
                             total_influence += self.influence[precessor][neighbor]
                     # informe/activate the node if the total influence exceeds it's threshold of activated
                     if(total_influence >= self.threshold[neighbor]):
@@ -576,3 +577,5 @@ class general_threshold():
             old_spread_nodes = copy.deepcopy(new_spread_nodes)
             times.append(len(new_activated_nodes))
         return activated_nodes, times
+    
+    
