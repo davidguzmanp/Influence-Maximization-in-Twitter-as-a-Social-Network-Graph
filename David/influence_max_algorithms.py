@@ -1,6 +1,7 @@
 from copy import deepcopy
 import networkx as ntwx
 from tqdm import tqdm
+import time as time
 
 class MIA():
 # greatly optimized version of the python implementation proposed by https://github.com/ksasi/fairMIA
@@ -211,21 +212,72 @@ class MIA():
                     Incinf_dict[w] = Incinf_dict[w] + self.getalpha(v, w, S, MIIAv, theta)*(1 - ap_all[w])
         return S
 
+    def MIA_fast_timed(self, network, k, theta):
+
+            print("Starting MIA intialization")
+
+            S = []
+            Incinf_dict = dict()
+            ap_dict = dict()
+            for v in list(network.nodes()):
+                Incinf_dict[v] = 0
+            for v in tqdm(list(network.nodes())):
+                MIIAv = self.getMIIA_global(network, v, theta, digraph = True)
+                MIIA = MIIAv
+                #MIOA = getMIOA(network, v, theta, digraph = True)
+                #print(len(list(MIIA.nodes())))
+                for u in list(MIIA.nodes()):
+                    Incinf_dict[u] = Incinf_dict[u] + self.getalpha(v, u, S, MIIAv, theta) * (1 - self.getap(u, S, MIIA))
+
+            print("Initialization Completed")
+
+            timings = []
+            for i in tqdm(range(1, k+1)):
+
+                start = time.time()
+
+                #from Incinf_dict remove the nodes in S
+                Incinf_dict_for_S = Incinf_dict.copy()
+                for v in S:
+                    Incinf_dict_for_S.pop(v)
+                
+                u = max(Incinf_dict_for_S, key = Incinf_dict_for_S.get)
+                MIOA = self.getMIOA(network, u, theta, digraph = True)
+                for v in list(MIOA.nodes()):
+                    MIIAv = self.getMIIA_global(network, v, theta, digraph = True)
+                    ap_all = self.getallap(S, MIIAv)
+                    for w in list(MIIAv.nodes()):
+                        Incinf_dict[w] = Incinf_dict[w] - self.getalpha(v, w, S, MIIAv, theta)*(1 - ap_all[w])
+                S.append(u)
+                #print(S)
+                for v in list(MIOA.nodes()): 
+                    MIIAv = self.getMIIA_global(network, v, theta, digraph = True)
+                    ap_all = self.getallap(S, MIIAv)
+                    for w in list(MIIAv.nodes()):
+                        Incinf_dict[w] = Incinf_dict[w] + self.getalpha(v, w, S, MIIAv, theta)*(1 - ap_all[w])
+
+                end = time.time()
+                timings.append(end - start)
+
+            
+            return S, timings
+
+
     def initial_incinf(self, network, theta):
 
-        print("Starting MIA intialization")
+            print("Starting MIA intialization")
 
-        S = []
-        Incinf_dict = dict()
-        ap_dict = dict()
-        for v in list(network.nodes()):
-            Incinf_dict[v] = 0
-        for v in tqdm(list(network.nodes())):
-            MIIAv = self.getMIIA_global(network, v, theta, digraph = True)
-            MIIA = MIIAv
-            #MIOA = getMIOA(network, v, theta, digraph = True)
-            #print(len(list(MIIA.nodes())))
-            for u in list(MIIA.nodes()):
-                Incinf_dict[u] = Incinf_dict[u] + self.getalpha(v, u, S, MIIAv, theta) * (1 - self.getap(u, S, MIIA))
+            S = []
+            Incinf_dict = dict()
+            ap_dict = dict()
+            for v in list(network.nodes()):
+                Incinf_dict[v] = 0
+            for v in tqdm(list(network.nodes())):
+                MIIAv = self.getMIIA_global(network, v, theta, digraph = True)
+                MIIA = MIIAv
+                #MIOA = getMIOA(network, v, theta, digraph = True)
+                #print(len(list(MIIA.nodes())))
+                for u in list(MIIA.nodes()):
+                    Incinf_dict[u] = Incinf_dict[u] + self.getalpha(v, u, S, MIIAv, theta) * (1 - self.getap(u, S, MIIA))
 
-        return Incinf_dict
+            return Incinf_dict
