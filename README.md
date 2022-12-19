@@ -3,7 +3,7 @@
 ## Abstract
 We study the problem of maximizing the expected spread
 of influence within a social network.
-In this report, we used the  Twitter accounts of "ProudBoys" members and of other users associated with them which form of snapshot a social network in the year 2020. We analyzed the influence maximization problem in several of the most widely studied models in social network analysis such as Independent Cascade, Decreasing Cascade, Weighted Cascade, TRIVALENCY, Linear Threshold, and Generalized Threshold models, along with 3 influence maximization algorithms: Naive Greedy, Cost Effective Lazy Forward (CELF) and Maximum Influence Arborescence (MIA). We compared the results from each algorithm paired with each model. As result, we detected accounts with the most influence on the network as it pertains to diffusion of information. Click \href{https://github.com/davidguzmanp/Network-Science-final-Maximization}{here} to access our GitHub.
+In this report, we used the  Twitter accounts of "ProudBoys" members and of other users associated with them which form of snapshot a social network in the year 2020. We analyzed the influence maximization problem in several of the most widely studied models in social network analysis such as Independent Cascade, Decreasing Cascade, Weighted Cascade, TRIVALENCY, Linear Threshold, and Generalized Threshold models, along with 3 influence maximization algorithms: Naive Greedy, Cost Effective Lazy Forward (CELF) and Maximum Influence Arborescence (MIA). We compared the results from each algorithm paired with each model. As result, we detected accounts with the most influence on the network as it pertains to diffusion of information. 
 
 ## Introduction 
 
