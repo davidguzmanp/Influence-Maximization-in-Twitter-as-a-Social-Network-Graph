@@ -11,6 +11,6 @@ The widespread use of the internet has led to billions of people being connected
 
 In recent years, with the popularity of social networks, the influence maximization problem has become a pressing issue in this field. The Influence Maximization problem identifies a small subset of the most important influencers in the network to tackle some real-world problems and activities(\cite{SINGH20227570}). Numerous techniques to improve the performance of Influence Maximization have been proposed. In this project, first, we will explore how to model the diffusion process to propagate the information by adapting several well-accepted diffusion models. Second, we will compare and analyze the outcome of existing Influence Maximization algorithms deployed on our dataset.  Our goal is to identify the top influential users in Twitter's network and determine which models and algorithms perform best on the dataset.
 
-Refer to the report for more!
+![Refer to the report for more!](https://github.com/davidguzmanp/Influence-Maximization-in-Twitter-as-a-Social-Network-Graph/blob/main/Influence%20Maximization%20in%20Twitter%20as%20a%20Social%20Network%20Graph.pdf)
 
 ![Networkvisualization](https://user-images.githubusercontent.com/43582853/208526862-795c44ed-ff94-4a52-a251-dc4749e7a211.svg)
